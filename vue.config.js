@@ -2,8 +2,8 @@ const path = require('path')
 const { mergeSassVariables } = require('@vuetify/cli-plugin-utils')
 
 module.exports = {
-  publicPath: '/',
-  outputDir: 'docs',
+  publicPath: './',
+  outputDir: './docs',
   lintOnSave: false,
   transpileDependencies: ['vuetify'],
   configureWebpack: {
