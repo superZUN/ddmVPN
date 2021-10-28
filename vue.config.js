@@ -2,7 +2,7 @@ const path = require('path')
 const { mergeSassVariables } = require('@vuetify/cli-plugin-utils')
 
 module.exports = {
-  publicPath: './',
+  publicPath: '/ddmVPN/',
   outputDir: './docs',
   lintOnSave: false,
   transpileDependencies: ['vuetify'],
