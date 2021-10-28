@@ -12,7 +12,7 @@
           class="mx-auto"
         >
           <h1 class="font-weight-medium mb-5">
-            뚱땡이 VPN 차림표
+            뚱땡이 VPN
           </h1>
         </v-col>
       </v-row>
@@ -48,10 +48,10 @@
                   <!-- annual plan -->
                   <div class="annual-plan">
                     <div class="plan-price d-flex align-center justify-center">
-                      <sup class="text-sm text-primary">$</sup>
                       <span class="pricing-basic-value text-5xl primary--text font-weight-semibold">
                         {{ status ? pricing.basicPlan.yearlyPlan.perMonth: pricing.basicPlan.monthlyPrice }}
                       </span>
+                      <sup class="text-sm text-primary">원</sup>
                       <sub class="pricing-duration text-sm mb-n3">/month</sub>
                     </div>
                     <small
@@ -111,16 +111,8 @@
                       color="primary"
                       class="v-chip-light-bg primary--text font-weight-semibold"
                     >
-                      Popular
+                      인기/추천
                     </v-chip>
-                  </div>
-
-                  <!-- image -->
-                  <div class="d-flex justify-center">
-                    <img
-                      :src="pricing.standardPlan.imgSrc"
-                      class="mx-auto"
-                    >
                   </div>
 
                   <!-- title -->
@@ -132,10 +124,10 @@
                   <!-- annual plan -->
                   <div class="annual-plan">
                     <div class="plan-price d-flex align-center justify-center">
-                      <sup class="text-sm text-primary">$</sup>
                       <span class="pricing-basic-value text-5xl primary--text font-weight-semibold">
                         {{ status ? pricing.standardPlan.yearlyPlan.perMonth: pricing.standardPlan.monthlyPrice }}
                       </span>
+                      <sup class="text-sm text-primary">원</sup>
                       <sub class="pricing-duration text-sm mb-n3">/month</sub>
                     </div>
                     <small
@@ -184,14 +176,6 @@
                 class="text-center"
               >
                 <v-card-text>
-                  <!-- image -->
-                  <div class="d-flex justify-center">
-                    <img
-                      :src="pricing.enterprisePlan.imgSrc"
-                      class="mx-auto mb-3"
-                    >
-                  </div>
-
                   <!-- title -->
                   <h1 class="text-2xl font-weight-medium">
                     {{ pricing.enterprisePlan.title }}
@@ -201,10 +185,10 @@
                   <!-- annual plan -->
                   <div class="annual-plan">
                     <div class="plan-price d-flex align-center justify-center">
-                      <sup class="text-sm text-primary">$</sup>
                       <span class="pricing-basic-value text-5xl primary--text font-weight-semibold">
                         {{ status ? pricing.enterprisePlan.yearlyPlan.perMonth: pricing.enterprisePlan.monthlyPrice }}
                       </span>
+                      <sup class="text-sm text-primary">원</sup>
                       <sub class="pricing-duration text-sm mb-n3">/month</sub>
                     </div>
                     <small
@@ -334,7 +318,7 @@ export default {
     const pricing = {
       basicPlan: {
         title: '고속서버',
-        monthlyPrice: 4900,
+        monthlyPrice: '4,900',
         currentPlan: true,
         popularPlan: false,
         subtitle: '메신저 & 유튜브 적합',
@@ -346,42 +330,30 @@ export default {
         planBenefits: ['사용 기기 1대', 'Traffic 무제한', '(50Gb이후 일반 서버)', '메신져 및 유튜브 적합'],
       },
       standardPlan: {
-        monthlyPrice: 49,
-        title: 'Standard',
+        monthlyPrice: '8,900',
+        title: '쾌속서버',
         popularPlan: true,
         currentPlan: false,
-        subtitle: 'For small to medium businesses',
+        subtitle: '끊김 없는 유튜브',
         imgSrc: require('@/assets/images/misc/pricing-tree-2.png'),
         yearlyPlan: {
           perMonth: 40,
           totalAnnual: 480,
         },
-        planBenefits: [
-          'Unlimited responses',
-          'Unlimited forms and surveys',
-          'Instagram profile page',
-          'Google Docs integration',
-          'Custom “Thank you” page',
-        ],
+        planBenefits: ['사용 기기 2대', 'Traffic 무제한', '(200Gb이후 일반 서버)', '유튜브 장기시청 적합'],
       },
       enterprisePlan: {
-        monthlyPrice: 99,
+        monthlyPrice: '12,900',
         popularPlan: false,
         currentPlan: false,
-        title: 'Enterprise',
+        title: '헤비 서버',
         subtitle: 'Solution for big organizations',
         imgSrc: require('@/assets/images/misc/pricing-tree-3.png'),
         yearlyPlan: {
           perMonth: 80,
           totalAnnual: 960,
         },
-        planBenefits: [
-          'PayPal payments',
-          'Logic Jumps',
-          'File upload with 5GB storage',
-          'Custom domain support',
-          'Stripe integration',
-        ],
+        planBenefits: ['사용 기기 4대', 'Traffic 무제한', '(400Gb이후 일반 서버)', '유튜브 장기시청 적합'],
       },
     }
 
