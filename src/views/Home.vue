@@ -359,20 +359,20 @@ export default {
 
     const faqsList = [
       {
-        title: 'General settings',
-        desc: 'Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar diam eros in elit. Pellentesque convallis laoreet laoreet.Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar diam eros in elit. Pellentesque convallis laoreet laoreet.',
+        title: '서비스가 차단될 수 있나요?',
+        desc: '뚱땡이VPN은 DNS, 콘텐츠, IP 차단 등 가장 정교한 형태의 차단 수단을 우회할 수 있습니다. 또한 VPN서버에 접속하는 엑세스키를 소수 인원에게 비공개로 제공하기 때문에 검열 기관에서 차단할 서버를 쉽게 액세스하여 파악할 수 있는 공개 VPN과는 다릅니다. 또한, 매우 강력한 차단 정책에 대비하여 복수의 서버를 비공개적으로 보유하고 있습니다. 서버 차단 시 즉시 여분 서버를 제공해 드리기 때문에 서버 차단에 대해 안심하셔도 됩니다.',
       },
       {
-        title: 'Users',
-        desc: 'Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar diam eros in elit. Pellentesque convallis laoreet laoreet.Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar diam eros in elit. Pellentesque convallis laoreet laoreet.',
+        title: '개인정보나 인터넷 기록이 저장 되나요?',
+        desc: '뚱땡이 VPN이 사용하는 outline App는 사용자의 개인정보 보호를 염두에 두고 만들어졌습니다. 절대 사용자의 트래픽을 로그하거나 인터넷 사용을 추적하지 않습니다. 사용자가 방문하는 웹사이트, 통신하는 대상 또는 내용에 관한 정보도 수집하지 않습니다. ',
       },
       {
-        title: 'Personal data',
-        desc: 'Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar diam eros in elit. Pellentesque convallis laoreet laoreet.Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar diam eros in elit. Pellentesque convallis laoreet laoreet.',
+        title: '뚱땡이 VPN은 안전한가요?',
+        desc: '뚱땡이 VPN이 사용하는 Outline은 독립 보안 기업 두 곳의 감사를 받았습니다. 다음 보고서를 읽어보세요. Radically Open Security, Cure53..',
       },
       {
-        title: 'Advanced settings',
-        desc: 'Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar diam eros in elit. Pellentesque convallis laoreet laoreet.Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar diam eros in elit. Pellentesque convallis laoreet laoreet.',
+        title: '무료 VPN을 사용하면 안되나요?',
+        desc: '많은 무료 VPN의 경우 사용자의 데이터에 누가 액세스할 수 있는지 알 수 없습니다. 많은 무료 VPN에서는 사용자의 데이터를 공유 또는 판매하거나 온라인 활동을 추적합니다. 일부 보안 전문가는 널리 사용되는 많은 무료 VPN에서 정부 또는 기타 감독기관에 백도어 액세스를 허용한다고 주장합니다. 대다수의 무료 VPN은 차단 및 감지에도 취약합니다.',
       },
     ]
 
