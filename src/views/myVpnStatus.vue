@@ -1,15 +1,16 @@
 <template>
-  <v-card v-if="show" class='mt-12 mb-12 offset-sm="2"' elevation="0">
-    <v-card-title class="align-start">
-      <span class="font-weight-semibold"> {{nickname}} hi 로그인했네!!!</span>
-      <v-spacer></v-spacer>
-    </v-card-title>
-  </v-card>
+  <v-container fluid>
+    <span class="font-weight-semibold"> {{nickname}} 님,</span>
+    <Dday />
+  </v-container>
 </template>
 
 <script>
 // eslint-disable-next-line object-curly-newline
+import Dday from './Dday.vue'
+
 export default {
+  components: { Dday },
   props: ['nickname'],
   data() {
     return {
@@ -18,6 +19,9 @@ export default {
   },
   mounted() {
     console.log(this.nickname)
+  },
+  methods: {
+    updateUserStatus() {},
   },
   watch: {
     nickname: {
