@@ -18,14 +18,6 @@
 
         <!-- Right Content: I18n, Light/Dark, Notification & User Dropdown -->
         <div class="d-flex align-center">
-          <!-- <app-bar-search
-            :shall-show-full-search.sync="shallShowFullSearch"
-            :data="appBarSearchData"
-            :filter="searchFilterFunc"
-            :search-query.sync="appBarSearchQuery"
-            class="me-4"
-          ></app-bar-search>
-          <app-bar-theme-switcher></app-bar-theme-switcher> -->
           <app-bar-user-menu class="ms-2"></app-bar-user-menu>
         </div>
       </div>
@@ -33,30 +25,11 @@
         :value="$store.state.app.shallContentShowOverlay"
         z-index="5"
         absolute
+
         class="system-bar-overlay"
       ></v-overlay>
     </template>
 
-    <!-- Slot: footer -->
-    <!-- <template #footer>
-      <div class="d-flex justify-space-between">
-        <span>COPYRIGHT &copy; {{ new Date().getFullYear() }} ThemeSelection, All rights Reserved</span>
-        <div class="d-flex align-center">
-          <span>Hand-crafted &amp; Made with</span>
-          <v-icon
-            color="error"
-            class="ms-2"
-          >
-            {{ icons.mdiHeartOutline }}
-          </v-icon>
-        </div>
-      </div>
-    </template> -->
-
-    <!-- App Content -->
-    <!-- <template #v-app-content>
-      <app-customizer class="d-none d-md-block"></app-customizer>
-    </template> -->
   </layout-content-horizontal-nav>
 </template>
 

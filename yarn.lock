@@ -2029,7 +2029,7 @@ axios-mock-adapter@^1.19.0:
     is-blob "^2.1.0"
     is-buffer "^2.0.5"
 
-axios@^0.21.1:
+axios@^0.21.4:
   version "0.21.4"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
   integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
@@ -8865,6 +8865,11 @@ vue-apexcharts@^1.6.1:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/vue-apexcharts/-/vue-apexcharts-1.6.2.tgz#0547826067f97e8ea67ca9423e524eb6669746ad"
   integrity sha512-9HS3scJwWgKjmkcWIf+ndNDR0WytUJD8Ju0V2ZYcjYtlTLwJAf2SKUlBZaQTkDmwje/zMgulvZRi+MXmi+WkKw==
+
+vue-axios@^3.3.7:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/vue-axios/-/vue-axios-3.3.7.tgz#1958b6fb712eb4011ab21db433b2350e2a6d684f"
+  integrity sha512-SmNFJIkM5YF4eWfaWfmCmORy52ZP5b8ml9PCTi7C0VsuQK4vwZON6ToNWuyFGCL6U/Fp/pzfIgdLLh/O/qKzYQ==
 
 vue-chartjs@^3.5.1:
   version "3.5.1"

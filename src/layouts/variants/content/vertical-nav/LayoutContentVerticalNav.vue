@@ -1,7 +1,6 @@
 <template>
   <layout-content-vertical-nav :nav-menu-items="navMenuItems">
     <slot></slot>
-
     <!-- Slot: Navbar -->
     <template #navbar="{ isVerticalNavMenuActive, toggleVerticalNavMenuActive }">
       <div
@@ -10,25 +9,30 @@
       >
         <!-- Left Content: Search -->
         <div class="d-flex align-center">
-          <v-icon
+          <h2> 뚱땡이  VPN</h2>
+          <!-- <v-icon
             v-if="$vuetify.breakpoint.mdAndDown"
             class="me-3"
             @click="toggleVerticalNavMenuActive"
           >
             {{ icons.mdiMenu }}
-          </v-icon>
-          <app-bar-search
+          </v-icon> -->
+          <!-- <app-bar-search
             :shall-show-full-search.sync="shallShowFullSearch"
             :data="appBarSearchData"
             :filter="searchFilterFunc"
             :search-query.sync="appBarSearchQuery"
             @update:shallShowFullSearch="handleShallShowFullSearchUpdate(isVerticalNavMenuActive, toggleVerticalNavMenuActive)"
-          ></app-bar-search>
+          ></app-bar-search> -->
         </div>
 
         <!-- Right Content: I18n, Light/Dark, Notification & User Dropdown -->
         <div class="d-flex align-center right-row">
-          <app-bar-user-menu></app-bar-user-menu>
+        <!-- 네이버 로그인 버튼 노출 영역 -->
+        <div id="naver_id_login"></div>
+        <!-- //네이버 로그인 버튼 노출 영역 -->
+          <button @click="logout" v-show="loginStatus"> logout </button>
+          <!-- <app-bar-user-menu></app-bar-user-menu> -->
         </div>
       </div>
     </template>
@@ -37,11 +41,11 @@
     <template #footer>
       <div class="d-flex justify-space-between">
         <span>COPYRIGHT &copy; {{ new Date().getFullYear() }} <a
-          href="https://themeselection.com"
+          href="#"
           class="text-decoration-none"
-        >ThemeSelection</a><span class="d-none d-md-inline">, All rights Reserved</span></span>
+        >뚱땡이마트</a><span class="d-none d-md-inline">, All rights Reserved</span></span>
         <div class="align-center d-none d-md-flex">
-          <span>Hand-crafted &amp; Made with</span>
+          <span>SZ Factory</span>
           <v-icon
             color="error"
             class="ms-2"
@@ -74,14 +78,16 @@ import { ref, watch } from '@vue/composition-api'
 export default {
   components: {
     LayoutContentVerticalNav,
-
-    // App Bar Components
     AppBarSearch,
     AppBarUserMenu,
   },
   setup() {
     const $vuetify = getVuetify()
 
+    //naver id login
+    const client_id = '6Rui0wRGtzMeWTqpPbkM'
+    const redirectURI = 'http://localhost:8080/home'
+    const state = ''
     // Search
     const appBarSearchQuery = ref('')
     const shallShowFullSearch = ref(false)
@@ -144,6 +150,59 @@ export default {
         mdiHeartOutline,
       },
     }
+  },
+  data() {
+    return {
+      loginStatus: false,
+      client_id: '6Rui0wRGtzMeWTqpPbkM',
+      client_secret: 'cpCyJkoSVU',
+      callbackUrl: 'http://localhost:8080/home',
+      token: undefined,
+      email: undefined,
+      nickname: undefined,
+      naver_id_login: undefined,
+    }
+  },
+  mounted() {
+    this.naver_id_login = new window.naver_id_login('6Rui0wRGtzMeWTqpPbkM', 'http://localhost:8080/home')
+
+    if (this.naver_id_login.getAccessToken() != undefined) {
+      this.loginStatus = true
+
+      this.token = this.naver_id_login.oauthParams.access_token
+      this.naver_id_login.get_naver_userprofile('this.callback')
+      // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+      setTimeout(() => {
+        this.email = this.naver_id_login.getProfileData('email')
+        this.nickname = this.naver_id_login.getProfileData('nickname')
+
+        this.$emit('setInput', this.nickname)
+      }, 2000)
+    } else {
+      console.log('no token')
+      const state = this.naver_id_login.getUniqState()
+      this.naver_id_login.setButton('white', 2, 25) // 버튼 설정
+      this.naver_id_login.setState(state)
+      // naver_id_login.setPopup(); // popup 설정을 위한 코드
+      this.naver_id_login.init_naver_id_login()
+    }
+  },
+  methods: {
+    logout() {
+      var url =
+        'https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=jyvqXeaVOVmV' +
+        this.client_id +
+        '&client_secret=' +
+        this.client_secret +
+        '&access_token=' +
+        this.token +
+        '&service_provider=NAVER'
+
+      this.axios.get(url).then(response => {
+        console.log(response.data)
+      })
+      window.location.replace(url)
+    },
   },
 }
 </script>

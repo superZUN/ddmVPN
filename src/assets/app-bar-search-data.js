@@ -5,6 +5,6 @@ import { mdiFileOutline, mdiHomeOutline } from '@mdi/js'
 export default [
   { header: 'Pages' },
 
-  { title: 'Home', icon: mdiHomeOutline, to: 'home' },
-  { title: 'Second Page', icon: mdiFileOutline, to: 'home' },
+  { title: '뚱땡이 VPN', icon: mdiHomeOutline, to: 'home' },
+  { title: '뚱땡이 마트', icon: mdiFileOutline, to: 'home' },
 ]

@@ -2,12 +2,12 @@ import { mdiFileOutline, mdiHomeOutline } from '@mdi/js'
 
 export default [
   {
-    title: 'Home',
+    title: '뚱땡이 VPN',
     icon: mdiHomeOutline,
     to: 'home',
   },
   {
-    title: 'Second Page',
+    title: '뚱땡이마트',
     icon: mdiFileOutline,
     to: 'second-page',
   },

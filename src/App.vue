@@ -1,16 +1,13 @@
 <template>
-  <component
-    :is="resolveLayoutVariant"
-    :class="`skin-variant--${appSkinVariant}`"
-  >
+  <LayoutContentVerticalNav @setInput='setInput'>
     <transition
       :name="appRouteTransition"
       mode="out-in"
       appear
     >
-      <router-view></router-view>
+      <router-view :nickname="nickname"></router-view>
     </transition>
-  </component>
+  </LayoutContentVerticalNav>
 </template>
 
 <script>
@@ -44,7 +41,7 @@ export default {
 
     const resolveLayoutVariant = computed(() => {
       if (route.value.meta.layout === 'blank') return 'layout-blank'
-      if (route.value.meta.layout === 'content') return `layout-content-horizontal-nav`
+      if (route.value.meta.layout === 'content') return `layout-content-vertical-nav`
 
       return null
     })
@@ -56,6 +53,20 @@ export default {
       appSkinVariant,
       appRouteTransition,
     }
+  },
+  data() {
+    return {
+      nickname: undefined,
+    }
+  },
+  mounted() {
+    console.log(this.nickname)
+  },
+  methods: {
+    setInput(value) {
+      this.nickname = value
+      console.log('received', value)
+    },
   },
 }
 </script>

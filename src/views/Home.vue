@@ -1,24 +1,10 @@
 <template>
   <v-card
     id="pricing-plan"
-    class="text-center"
+    class="text-center pa-1 ma-1"
   >
-    <v-card-text>
-      <v-row>
-        <v-col
-          cols="12"
-          md="12"
-          sm="12"
-          class="mx-auto"
-        >
-          <h1 class="font-weight-medium mb-5">
-            뚱땡이 VPN
-          </h1>
-        </v-col>
-      </v-row>
-    </v-card-text>
-
-    <v-card-text class="mt-3 pb-15">
+    <myVpnStatus :nickname="nickname"/>
+    <v-card-text class="mt-3">
       <v-row>
         <v-col
           offset-sm="2"
@@ -54,10 +40,6 @@
                       <sup class="text-sm text-primary">원</sup>
                       <sub class="pricing-duration text-sm mb-n3">/month</sub>
                     </div>
-                    <small
-                      v-if="status"
-                      class="annual-pricing"
-                    >USD {{ pricing.basicPlan.yearlyPlan.totalAnnual }} / year</small>
                   </div>
                 <!--/ annual plan -->
                 </v-card-text>
@@ -83,9 +65,9 @@
                   <v-btn
                     outlined
                     block
-                    color="success"
+                    color="primary"
                   >
-                    Your current plan
+                    신청하기
                   </v-btn>
                 </v-card-text>
               </v-card>
@@ -130,10 +112,6 @@
                       <sup class="text-sm text-primary">원</sup>
                       <sub class="pricing-duration text-sm mb-n3">/month</sub>
                     </div>
-                    <small
-                      v-if="status"
-                      class="annual-pricing"
-                    >USD {{ pricing.standardPlan.yearlyPlan.totalAnnual }} / year</small>
                   </div>
                 <!--/ annual plan -->
                 </v-card-text>
@@ -160,7 +138,7 @@
                     block
                     color="primary"
                   >
-                    Upgrade
+                    신청하기
                   </v-btn>
                 </v-card-text>
               </v-card>
@@ -191,10 +169,6 @@
                       <sup class="text-sm text-primary">원</sup>
                       <sub class="pricing-duration text-sm mb-n3">/month</sub>
                     </div>
-                    <small
-                      v-if="status"
-                      class="annual-pricing"
-                    >USD {{ pricing.enterprisePlan.yearlyPlan.totalAnnual }} / year</small>
                   </div>
                 <!--/ annual plan -->
                 </v-card-text>
@@ -222,7 +196,7 @@
                     block
                     color="primary"
                   >
-                    Upgrade
+                    신청하기
                   </v-btn>
                 </v-card-text>
               </v-card>
@@ -230,48 +204,9 @@
           </v-row>
         </v-col>
       </v-row>
-    </v-card-text>
+  </v-card-text>
 
-    <!-- pricing free trial -->
-    <v-card-text class="pricing-free-trial my-16">
-      <v-row>
-        <v-col
-          cols="12"
-          md="10"
-          class="mx-auto"
-        >
-          <div class="pricing-trial-content d-flex justify-space-between flex-column flex-md-row">
-            <div class="text-center text-md-left mt-7">
-              <p class="text-2xl font-weight-medium primary--text mb-2">
-                Still not convinced? Start with a 14-day FREE trial!
-              </p>
-              <p class="text-base">
-                You will get full access to with all the features for 14 days.
-              </p>
-
-              <v-btn
-                color="primary"
-                class="mt-4 mt-lg-6"
-              >
-                Start 14-day FREE trial
-              </v-btn>
-            </div>
-
-            <!-- images -->
-            <v-img
-              contain
-              height="278"
-              max-width="250"
-              src="@/assets/images/3d-characters/pose-fs-9.png"
-              class="pricing-trial-img mx-auto"
-              alt="svg img"
-            />
-            <!--/ images -->
-          </div>
-        </v-col>
-      </v-row>
-    </v-card-text>
-    <!--/ pricing free trial -->
+    <analytics-statistics-card></analytics-statistics-card>
 
     <v-card-text>
       <h2 class="text-2xl font-weight-medium mb-2">
@@ -309,12 +244,24 @@
 <script>
 import { ref } from '@vue/composition-api'
 import { mdiCheckboxBlankCircleOutline } from '@mdi/js'
+import AnalyticsStatisticsCard from './AnalyticsStatisticsCard.vue'
+import myVpnStatus from './myVpnStatus.vue'
 
 export default {
+  components: {
+    AnalyticsStatisticsCard,
+    myVpnStatus,
+  },
+  props: ['nickname'],
+  data() {
+    return {
+      name: this.nickname,
+      welcome: 'welcome',
+    }
+  },
   setup() {
     const status = ref(false)
     const pricingAccordion = ref(0)
-
     const pricing = {
       basicPlan: {
         title: '고속서버',
@@ -334,7 +281,7 @@ export default {
         title: '쾌속서버',
         popularPlan: true,
         currentPlan: false,
-        subtitle: '끊김 없는 유튜브',
+        subtitle: '틈만 나면 유튜브 시청',
         imgSrc: require('@/assets/images/misc/pricing-tree-2.png'),
         yearlyPlan: {
           perMonth: 40,
@@ -346,8 +293,8 @@ export default {
         monthlyPrice: '12,900',
         popularPlan: false,
         currentPlan: false,
-        title: '헤비 서버',
-        subtitle: 'Solution for big organizations',
+        title: '대용량 서버',
+        subtitle: '용량 걱정이 펑펑써도 콸콸콸',
         imgSrc: require('@/assets/images/misc/pricing-tree-3.png'),
         yearlyPlan: {
           perMonth: 80,
@@ -374,6 +321,18 @@ export default {
         title: '무료 VPN을 사용하면 안되나요?',
         desc: '많은 무료 VPN의 경우 사용자의 데이터에 누가 액세스할 수 있는지 알 수 없습니다. 많은 무료 VPN에서는 사용자의 데이터를 공유 또는 판매하거나 온라인 활동을 추적합니다. 일부 보안 전문가는 널리 사용되는 많은 무료 VPN에서 정부 또는 기타 감독기관에 백도어 액세스를 허용한다고 주장합니다. 대다수의 무료 VPN은 차단 및 감지에도 취약합니다.',
       },
+      {
+        title: 'VPN이 왜 필요한가요?',
+        desc: '많은 무료 VPN의 경우 사용자의 데이터에 누가 액세스할 수 있는지 알 수 없습니다. 많은 무료 VPN에서는 사용자의 데이터를 공유 또는 판매하거나 온라인 활동을 추적합니다. 일부 보안 전문가는 널리 사용되는 많은 무료 VPN에서 정부 또는 기타 감독기관에 백도어 액세스를 허용한다고 주장합니다. 대다수의 무료 VPN은 차단 및 감지에도 취약합니다.',
+      },
+      {
+        title: 'VPN의 원리는 뭔가요?',
+        desc: '많은 무료 VPN의 경우 사용자의 데이터에 누가 액세스할 수 있는지 알 수 없습니다. 많은 무료 VPN에서는 사용자의 데이터를 공유 또는 판매하거나 온라인 활동을 추적합니다. 일부 보안 전문가는 널리 사용되는 많은 무료 VPN에서 정부 또는 기타 감독기관에 백도어 액세스를 허용한다고 주장합니다. 대다수의 무료 VPN은 차단 및 감지에도 취약합니다.',
+      },
+      {
+        title: 'VPN은 불법인가요?',
+        desc: '많은 무료 VPN의 경우 사용자의 데이터에 누가 액세스할 수 있는지 알 수 없습니다. 많은 무료 VPN에서는 사용자의 데이터를 공유 또는 판매하거나 온라인 활동을 추적합니다. 일부 보안 전문가는 널리 사용되는 많은 무료 VPN에서 정부 또는 기타 감독기관에 백도어 액세스를 허용한다고 주장합니다. 대다수의 무료 VPN은 차단 및 감지에도 취약합니다.',
+      },
     ]
 
     return {
@@ -385,6 +344,11 @@ export default {
         mdiCheckboxBlankCircleOutline,
       },
     }
+  },
+  mounted() {
+    // console.log('home, test', this.test)
+    // console.log('home, name', this.name)
+    // console.log('home, props.nickname', this.nickname)
   },
 }
 </script>

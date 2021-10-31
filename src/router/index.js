@@ -15,6 +15,7 @@ const routes = [
     meta: {
       layout: 'content',
     },
+    props: true,
   },
   {
     path: '/second-page',
