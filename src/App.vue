@@ -1,5 +1,5 @@
 <template>
-  <LayoutContentVerticalNav @setInput='setInput'>
+  <LayoutContentVerticalNav @getInfo='getInfo'>
     <transition
       :name="appRouteTransition"
       mode="out-in"
@@ -63,8 +63,9 @@ export default {
     console.log(this.nickname)
   },
   methods: {
-    setInput(value) {
-      this.nickname = value
+    getInfo(value) {
+      this.nickname = value[0]
+      this.email = value[1]
       console.log('received', value)
     },
   },

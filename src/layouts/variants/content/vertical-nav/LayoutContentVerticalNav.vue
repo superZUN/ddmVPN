@@ -176,7 +176,7 @@ export default {
         this.email = this.naver_id_login.getProfileData('email')
         this.nickname = this.naver_id_login.getProfileData('nickname')
 
-        this.$emit('setInput', this.nickname)
+        this.$emit('getInfo', [this.nickname, this.email])
       }, 2000)
     } else {
       console.log('no token')

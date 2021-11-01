@@ -1,13 +1,13 @@
 <template>
   <v-container fluid>
-    <span class="font-weight-semibold"> {{nickname}} 님,</span>
-    <Dday />
+    <Dday :nickname="nickname" v-show="show"/>
+    <!-- <DDVPNStatisticsView v-show="!show"/> -->
   </v-container>
 </template>
 
 <script>
 // eslint-disable-next-line object-curly-newline
-import Dday from './Dday.vue'
+import Dday from './DdayView.vue'
 
 export default {
   components: { Dday },
@@ -18,7 +18,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.nickname)
+    // console.log(this.nickname)
   },
   methods: {
     updateUserStatus() {},
@@ -29,7 +29,6 @@ export default {
       immediate: true,
       handler(val, oldVal) {
         // do your stuff
-        console.log('watch', this.nickname)
         if (this.nickname != undefined) {
           this.show = true
         }
